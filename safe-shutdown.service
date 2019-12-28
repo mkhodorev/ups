@@ -1,0 +1,13 @@
+[Unit]
+Description=Safe shutdown when power failure
+
+[Service]
+Environment="WAIT_BEFORE_SHUTDOWN=300"
+Restart=always
+ExecStart=/bin/safe-shutdown
+ExecStop=/bin/sh -c 'pkill -f safe-shutdown'
+ExecStartPost=/bin/sh -c 'umask 022; pgrep safe-shutdown > /var/run/safe-shutdown.pid'
+PIDFile=/var/run/safe-shutdown.pid
+
+[Install]
+WantedBy=default.target
