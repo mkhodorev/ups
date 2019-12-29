@@ -47,3 +47,6 @@ cp safe-shutdown.service /etc/systemd/system/
 systemctl enable safe-shutdown.service
 systemctl start safe-shutdown.service
 ```
+
+## Схема UPS
+![ups](ups.png)
